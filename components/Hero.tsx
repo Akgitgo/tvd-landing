@@ -5,7 +5,7 @@ export function Hero(): string {
   }
   const bannerSrc = isMobile
     ? '/Value drive POC Website Banner-03.jpg'
-    : '/Value drive POC Website Banner-02.jpg';
+    : '/Value drive POC Website Banner-01.jpg';
   return `
     <section class="hero-banner">
       <img
