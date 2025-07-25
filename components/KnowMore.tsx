@@ -13,7 +13,7 @@ export function KnowMore(): string {
           </p>
         </div>
         <div class="know-more__img-holder">
-          <img src="/assets/brandlinkage.png" alt="RAAM Group Brand Lineage" class="know-more__img" />
+          <img src="/brandlinkage.png" alt="RAAM Group Brand Lineage" class="know-more__img" />
         </div>
       </div>
     </section>

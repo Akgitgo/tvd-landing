@@ -2,7 +2,7 @@ export function Header(): string {
   return `
     <header class="header">
       <div class="header__left-logo header__logo-desktop">
-        <img src="/assets/Value Drive1.png" alt="Value Drive Logo" class="header__logo-img" height="40" />
+        <img src="/Value Drive1.png" alt="Value Drive Logo" class="header__logo-img" height="40" />
       </div>
       <nav class="header__nav" id="header-nav">
         <ul class="header__nav-list">
@@ -13,16 +13,16 @@ export function Header(): string {
       </nav>
       <button class="header__cta-btn header__cta-btn-desktop" id="know-more-btn">Know More</button>
       <div class="header__right-logo header__logo-desktop">
-        <img src="/assets/Reassure1.png" alt="Reassure Logo" class="header__logo-img" height="40" />
+        <img src="/Reassure1.png" alt="Reassure Logo" class="header__logo-img" height="40" />
       </div>
       <!-- Mobile Only Layout -->
       <div class="header__mobile-row">
-        <img src="/assets/Value Drive1.png" alt="Value Drive Logo" class="header__logo-img header__logo-mobile" height="26" />
+        <img src="/Value Drive1.png" alt="Value Drive Logo" class="header__logo-img header__logo-mobile" height="26" />
         <button class="header__cta-btn header__cta-btn-mobile" id="know-more-btn-mobile">Know More</button>
         <button class="header__hamburger header__hamburger-mobile" id="header-hamburger-mobile" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
-        <img src="/assets/Reassure1.png" alt="Reassure Logo" class="header__logo-img header__logo-mobile" height="26" />
+        <img src="/Reassure1.png" alt="Reassure Logo" class="header__logo-img header__logo-mobile" height="26" />
       </div>
     </header>
   `;

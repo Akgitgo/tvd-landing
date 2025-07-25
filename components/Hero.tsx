@@ -4,8 +4,8 @@ export function Hero(): string {
     isMobile = window.innerWidth <= 700;
   }
   const bannerSrc = isMobile
-    ? '/assets/Value drive POC Website Banner-03.jpg'
-    : '/assets/Value drive POC Website Banner-02.jpg';
+    ? '/Value drive POC Website Banner-03.jpg'
+    : '/Value drive POC Website Banner-02.jpg';
   return `
     <section class="hero-banner">
       <img
