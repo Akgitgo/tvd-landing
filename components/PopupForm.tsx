@@ -6,7 +6,7 @@ export function PopupForm(): string {
     <div id="popup-form" class="popup-form" style="display: none;">
       <div class="popup-content">
         <button id="close-popup" class="close-btn" type="button">&times;</button>
-        <h2 class="popup-title">Book Your Test Drive</h2>
+        <h2 class="popup-title">Want to know more about our products? Get free consultation</h2>
         <form id="popup-form-form">
           <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
           <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" maxlength="10" />
@@ -29,6 +29,13 @@ export function hidePopup(): void {
   const popup = document.getElementById('popup-form');
   if (popup) popup.style.display = 'none';
   isPopupVisible = false;
+  // If not submitted, restart timer to show popup again after 8 seconds
+  if (!hasPopupSubmitted()) {
+    if (popupTimer) clearTimeout(popupTimer);
+    popupTimer = window.setTimeout(() => {
+      showPopup();
+    }, 8000);
+  }
 }
 
 function setPopupSubmitted(): void {
@@ -45,7 +52,7 @@ export function setupPopupListeners(): void {
     if (popupTimer) clearTimeout(popupTimer);
     popupTimer = window.setTimeout(() => {
       showPopup();
-    }, 7000);
+    }, 8000);
   }
 
   document.addEventListener('click', (e) => {

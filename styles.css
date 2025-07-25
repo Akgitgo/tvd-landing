@@ -406,13 +406,7 @@
     margin-bottom: 0.5rem;
   }
   .know-more__content {
-    flex-direction: column;
-  }
-  .know-more__desc {
-    order: 1;
-  }
-  .know-more__img-holder {
-    order: 2;
+    flex-direction: column !important;
   }
 }
 
