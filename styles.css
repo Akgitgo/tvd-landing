@@ -405,6 +405,15 @@
     width: 100%;
     margin-bottom: 0.5rem;
   }
+  .know-more__content {
+    flex-direction: column;
+  }
+  .know-more__desc {
+    order: 1;
+  }
+  .know-more__img-holder {
+    order: 2;
+  }
 }
 
 /* Make footer stick to bottom */
@@ -579,6 +588,7 @@ body {
   line-height: 1.7;
   font-weight: 500;
   letter-spacing: 0.01em;
+  text-align: justify;
 }
 .know-more__img-holder {
   flex: 1 1 50%;
