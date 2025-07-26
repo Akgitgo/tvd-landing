@@ -11,7 +11,7 @@ export function Header(): string {
           <li><a href="#footer">Contact Us</a></li>
         </ul>
       </nav>
-      <button class="header__cta-btn header__cta-btn-desktop" id="know-more-btn">Know More</button>
+      <button class="header__cta-btn header__cta-btn-desktop" id="know-more-btn">Book a Car</button>
       <div class="header__right-logo header__logo-desktop">
         <img src="/Reassure1.png" alt="Reassure Logo" class="header__logo-img" height="40" />
       </div>

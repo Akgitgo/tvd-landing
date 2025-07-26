@@ -1,12 +1,13 @@
 let isPopupVisible = false;
 let popupTimer: number | undefined;
+let isFirstPopupShown = false;
 
 export function PopupForm(): string {
   return `
     <div id="popup-form" class="popup-form" style="display: none;">
       <div class="popup-content">
         <button id="close-popup" class="close-btn" type="button">&times;</button>
-        <h2 class="popup-title">Want to know more about our products? Get free consultation</h2>
+        <h2 class="popup-title">Want to know more about our cars and prices?</h2>
         <form id="popup-form-form">
           <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
           <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" maxlength="10" />
@@ -20,17 +21,26 @@ export function PopupForm(): string {
 }
 
 export function showPopup(): void {
+  console.log('showPopup called');
   const popup = document.getElementById('popup-form');
-  if (popup) popup.style.display = 'flex';
+  if (popup) {
+    popup.style.display = 'flex';
+    console.log('Popup should be visible now');
+  } else {
+    console.error('Popup element not found!');
+  }
   isPopupVisible = true;
 }
 
 export function hidePopup(): void {
+  console.log('hidePopup called');
   const popup = document.getElementById('popup-form');
   if (popup) popup.style.display = 'none';
   isPopupVisible = false;
+  
   // If not submitted, restart timer to show popup again after 8 seconds
   if (!hasPopupSubmitted()) {
+    console.log('Setting up 8-second timer for next popup');
     if (popupTimer) clearTimeout(popupTimer);
     popupTimer = window.setTimeout(() => {
       showPopup();
@@ -46,13 +56,27 @@ function hasPopupSubmitted(): boolean {
   return localStorage.getItem('popupFormSubmitted') === 'true';
 }
 
+// Function to clear popup submission status for testing
+export function clearPopupSubmission(): void {
+  localStorage.removeItem('popupFormSubmitted');
+  console.log('Popup submission status cleared');
+}
+
 export function setupPopupListeners(): void {
-  // Always set up the timer on page load (including refresh)
+  console.log('setupPopupListeners called');
+  console.log('hasPopupSubmitted:', hasPopupSubmitted());
+  
+  // Show first popup after 3 seconds if not submitted
   if (!hasPopupSubmitted()) {
+    console.log('Setting up 3-second timer for first popup');
     if (popupTimer) clearTimeout(popupTimer);
     popupTimer = window.setTimeout(() => {
+      console.log('3-second timer fired, showing popup');
       showPopup();
-    }, 8000);
+      isFirstPopupShown = true;
+    }, 3000);
+  } else {
+    console.log('Popup already submitted, not showing');
   }
 
   document.addEventListener('click', (e) => {

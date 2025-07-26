@@ -623,7 +623,7 @@ body {
   }
 }
 
-/* Cookie Banner Styles */
+/* Cookie Banner Styles (with close button) */
 .cookie-banner {
   position: fixed;
   left: 0;
@@ -648,6 +648,7 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0.7rem 1.5rem;
+  position: relative;
 }
 .cookie-banner__text {
   font-size: 1.08rem;
@@ -675,6 +676,24 @@ body {
 .cookie-banner__accept:hover {
   background: #b00;
 }
+.cookie-banner__close {
+  background: none;
+  border: none;
+  color: #e00;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  top: 0.2rem;
+  right: 1.2rem;
+  line-height: 1;
+  padding: 0 0.5rem;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.cookie-banner__close:hover {
+  color: #181818;
+}
 @media (max-width: 700px) {
   .cookie-banner__content {
     flex-direction: column;
@@ -686,6 +705,10 @@ body {
     width: 100%;
     max-width: 320px;
     align-self: center;
+  }
+  .cookie-banner__close {
+    right: 0.7rem;
+    top: 0.1rem;
   }
 }
 
