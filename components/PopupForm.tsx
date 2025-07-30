@@ -12,6 +12,11 @@ export function PopupForm(): string {
           <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
           <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" maxlength="10" />
           <input type="text" id="popup-city" name="city" placeholder="Your City/Location" required />
+          <select id="popup-car-interest" name="interestedCar" required>
+            <option value="" disabled selected>Which car you are interested in?</option>
+            <option value="MG">MG</option>
+            <option value="Non MG">Non MG</option>
+          </select>
           <button type="submit" id="popup-submit">Submit</button>
         </form>
         <div id="popup-success" class="popup-success" style="display:none;">We will get back to you soon ✅</div>
@@ -86,6 +91,19 @@ export function setupPopupListeners(): void {
     }
   });
 
+  // Handle dropdown placeholder behavior
+  const carInterestSelect = document.getElementById('popup-car-interest') as HTMLSelectElement;
+  if (carInterestSelect) {
+    carInterestSelect.addEventListener('change', (e) => {
+      const select = e.target as HTMLSelectElement;
+      if (select.value === '') {
+        select.style.color = '#bbb';
+      } else {
+        select.style.color = '#fff';
+      }
+    });
+  }
+
   document.addEventListener('submit', async (e) => {
     const form = e.target as HTMLFormElement;
     if (form && form.id === 'popup-form-form') {
@@ -93,9 +111,10 @@ export function setupPopupListeners(): void {
       const name = (document.getElementById('popup-name') as HTMLInputElement).value.trim();
       const phone = (document.getElementById('popup-phone') as HTMLInputElement).value.trim();
       const city = (document.getElementById('popup-city') as HTMLInputElement).value.trim();
+      const interestedCar = (document.getElementById('popup-car-interest') as HTMLSelectElement).value.trim();
       const submitBtn = document.getElementById('popup-submit') as HTMLButtonElement;
       const successMsg = document.getElementById('popup-success') as HTMLElement;
-      if (!name || !phone || !city) return;
+      if (!name || !phone || !city || !interestedCar || interestedCar === "") return;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Fetching details 🔃';
       // Send to Google Sheets API (form-encoded, no CORS preflight)
@@ -104,6 +123,7 @@ export function setupPopupListeners(): void {
         formData.append('name', name);
         formData.append('phone', phone);
         formData.append('city', city);
+        formData.append('interestedCar', interestedCar);
         await fetch('https://script.google.com/macros/s/AKfycbyEOKE-d78a95JiaKxRud_vLVhm-9JeaX_d1Y-pvIt8itYWccj1cOGEOT5t9KBWL8aV/exec', {
           method: 'POST',
           body: formData
